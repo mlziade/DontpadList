@@ -37,10 +37,10 @@ function updateDontpadPage(targetUrl, text) {
 
     fetch(finalUrl, fetchOptions)
         .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            } else if (response.status === 429) {
+            if (response.status === 429) {
                 throw new Error("Too many requests, please try again later.");
+            } else if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
             }
             const updateTimestamp = response.json();
             return updateTimestamp;
@@ -73,9 +73,11 @@ function getDontpadPageContent(targetUrl) {
 
         fetch(finalUrl, fetchOptions)
             .then(response => {
-                if (!response.ok) {
+                if (response.status === 429) {
+                    throw new Error("Too many requests, please try again later.");
+                } else if (!response.ok) {
                     throw new Error(`HTTP error while fetching content of ${targetUrl} ` + response.status);
-                }
+                } 
                 return response.json();
             })
             .then(jsonData => {
@@ -84,7 +86,6 @@ function getDontpadPageContent(targetUrl) {
                 resolve(body);
             })
             .catch(error => {
-                console.error(error);
                 reject(error);
             });
     });
@@ -149,15 +150,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                         .catch((error) => {
                             // Handle "Too many requests" error
-                            if (error.message.includes("429")) {
+                            if (error.message === "Too many requests, please try again later.") {
                                 status.style.color = "red";
                                 status.textContent = "Too many requests, please try again later.";
                                 status.removeAttribute("hidden");
+                            } else {
+                                // Show error message to user
+                                status.style.color = "red";
+                                status.textContent = "Error updating Dontpad page!";
+                                status.removeAttribute("hidden");
                             }
-                            // Show error message to user
-                            status.style.color = "red";
-                            status.textContent = "Error updating Dontpad page!";
-                            status.removeAttribute("hidden");
                         });
                 }
             })
