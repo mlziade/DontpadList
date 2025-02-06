@@ -39,6 +39,8 @@ function updateDontpadPage(targetUrl, text) {
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
+            } else if (response.status === 429) {
+                throw new Error("Too many requests, please try again later.");
             }
             const updateTimestamp = response.json();
             return updateTimestamp;
@@ -146,11 +148,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             status.removeAttribute("hidden");
                         })
                         .catch((error) => {
+                            // Handle "Too many requests" error
+                            if (error.message.includes("429")) {
+                                status.style.color = "red";
+                                status.textContent = "Too many requests, please try again later.";
+                                status.removeAttribute("hidden");
+                            }
                             // Show error message to user
                             status.style.color = "red";
                             status.textContent = "Error updating Dontpad page!";
                             status.removeAttribute("hidden");
-                            console.error("Error updating Dontpad page:", error);
                         });
                 }
             })
