@@ -2,6 +2,18 @@
 
 This extension allows users to append highlighted text from the current webpage as a list entry, loosely based on the Brazilian ABNT reference for websites, to a [Dontpad](https://dontpad.com) page of their choice.
 
+## Examples
+![Popup](/assets/docs/example1.png)
+![Result](/assets/docs/example2.png)
+
+## Observation and considerations
+
+Unfortunately, the Dontpad API is very restrictive with its rate limiting when you make API calls outside of their own website (which is obviously understandable). So the extension itself is not the most useful one ☹️.
+
+I could probably work around that using an automation library or something, but I suppose its their choice to rate limit the use. I personally love Dontpad (and missed it very much the last time it went out of service), so I'm going to respect their wishes 🤗 and also, not publish it to Chrome Web Store.
+
+But I still had a lot of fun creating my first Chromium extension, and it actually took much less time than I thought it would!
+
 ## Project Structure
 
 - **manifest.json**: Contains metadata about the extension, permissions, and specifies scripts (content script, background service worker, popup).
