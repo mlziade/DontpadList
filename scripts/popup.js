@@ -19,15 +19,15 @@ function generateNewDontpadEntry(text, title, url) {
     return `\n\n-"${finalText}". ${titleInfo}\n\t-Disponivel em: ${url}. Acesso em: ${currentDate}.`;
 }
 
-/* 
-* Function to update the content of a dontpad page
-* @param {string} targetUrl - The URL of the dontpad page
-* @param {string} text - The text to be written in the dontpad page
-*
-* @throws {Error} If the URL is invalid
-*
-* @returns {Promise<any>} The timestamp of the last update of the page
-*/
+/**
+ * Updates a Dontpad page with the provided text.
+ *
+ * @param {string} targetUrl - The target URL path for the Dontpad page.
+ * @param {string} text - The text content to update on the Dontpad page.
+ * @returns {Promise<Object>} A promise that resolves with the response data or rejects with an error.
+ *
+ * @throws {Error} Throws an error if the HTTP request fails or if there are too many requests.
+ */
 function updateDontpadPage(targetUrl, text) {
     const finalUrl = `http://api.dontpad.com/${targetUrl}`;
 
@@ -63,12 +63,13 @@ function updateDontpadPage(targetUrl, text) {
         });
 }
 
-/* 
-* Function to get the content of a Dontpad page
-* @param {string} targetUrl - The URL of the Dontpad page
-*
-* @returns {Promise<string>} The content of the Dontpad page
-*/
+/**
+ * Fetches the content of a Dontpad page.
+ *
+ * @param {string} targetUrl - The target URL of the Dontpad page (without the base URL).
+ * @returns {Promise<string>} A promise that resolves with the content of the Dontpad page.
+ * @throws {Error} Throws an error if the request fails or if there are too many requests.
+ */
 function getDontpadPageContent(targetUrl) {
     return new Promise((resolve, reject) => {
         const finalUrl = `http://api.dontpad.com/${targetUrl}.body.json?lastModified=0`;
