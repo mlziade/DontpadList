@@ -18,7 +18,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             url: getCurrentPageUrl(),
             title: getCurrentPageTitle(),
         };
-        console.log(selected);
         sendResponse({
             ...selected
         });
