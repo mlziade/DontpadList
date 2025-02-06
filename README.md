@@ -33,10 +33,10 @@ But I still had a lot of fun creating my first Chromium extension, and it actual
 ## Usage
 
 1. Click on the extension icon in the Chrome toolbar to open the popup.
-2. Highlight any text on the current webpage.
-3. Click the "Add Highlighted Text" button in the popup.
-4. The highlighted text will be logged to the browser console.
-5. (Optional) Use functions in `main.js` to update or fetch content from a Dontpad page.
+2. Type in a valid Dontpad path.
+3. Highlight any text on the current webpage.
+4. Click the "Add Highlighted Text" button in the popup.
+5. The highlighted text will stored in the Dontpad path as a "ABNT" style reference
 
 ## License
 
