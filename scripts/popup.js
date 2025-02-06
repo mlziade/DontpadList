@@ -1,3 +1,11 @@
+/* 
+* Function to generate a new entry for a dontpad page
+* @param {string} text - The text to be written in the dontpad page
+* @param {string} title - The title of the page
+* @param {string} url - The URL of the page
+*
+* @returns {string} The new entry for the dontpad page
+*/
 function generateNewDontpadEntry(text, title, url) {
     const currentDate = new Date().toLocaleDateString("pt-BR", {
         day: "2-digit",
