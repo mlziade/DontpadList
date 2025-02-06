@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Dontpad List!",
+  "version": "1.0",
+  "description": "A chrome extension that allows the users to append highlighted text from the current webpage as a list entry, loosely based on the Brazilian ABNT reference for websites, to a Dontpad page of their choice.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "htmls/popup.html",
+    "default_icon": "assets/icon.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/content.js"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Extension Popup</title>
+    <style>
+        body {
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(0, 0, 0);
+            font-family: verdana
+        }
+
+        button {
+            position: relative;
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #725AC1;
+            background: transparent;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+            border: 2px solid #725AC1;
+            border-radius: 10px;
+            box-shadow: inset 0 0 0 0 #725AC1;
+        }
+
+        button:hover {
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #725AC1;
+            transition: ease-out 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        #status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dontpad List!</h2>
+    <input id="dontpadPath" type="text" placeholder="Enter Dontpad path here">
+    <button id="addTextToList">Add Highlighted Text</button>
+    <p id="status" hidden></p>
+    <footer>
+        <a href="https://github.com/mlziade">Developed by mlziade
+            <img src="../assets/github-mark.svg" alt="GitHub" width="20" height="20" style="margin-bottom: -4px;">
+        </a>
+    <script src="../scripts/popup.js"></script>
+</body>
+
+</html>
